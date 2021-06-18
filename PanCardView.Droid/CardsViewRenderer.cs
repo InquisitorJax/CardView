@@ -52,15 +52,18 @@ namespace PanCardView.Droid
 
             if (Element.IsPanControllingByChild || !Element.IsPanInteractionEnabled || Element.ShouldThrottlePanInteraction)
             {
+                Console.WriteLine("====================> ORRR (false)");
                 base.OnInterceptTouchEvent(ev);
                 return false;
             }
 
             if (ev.ActionMasked == MotionEventActions.Move)
             {
+                Console.WriteLine("====================> MOOOVE");
                 return CheckTouchHandled(GetTotalX(ev), GetTotalY(ev));
             }
 
+            Console.WriteLine("====================> MOOOVE (false)");
             HandleDownUpEvents(ev);
             return false;
         }
